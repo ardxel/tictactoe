@@ -1,6 +1,6 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { PropsWithChildren, createContext, useContext } from 'react';
-import { useGameManager } from './manager';
+import { useGameManager } from 'core/logic';
 import { BoardPosition, TicTacToeBoard, TicTacToeCell } from './types';
 
 SplashScreen.preventAutoHideAsync();

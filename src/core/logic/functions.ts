@@ -1,4 +1,4 @@
-import { BoardPosition, TicTacToeBoard, TicTacToeCell, TicTacToeResult } from './types';
+import { BoardPosition, TicTacToeBoard, TicTacToeCell, TicTacToeResult } from 'core';
 
 export const createBoard = function (): TicTacToeBoard {
   return [

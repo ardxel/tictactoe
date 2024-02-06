@@ -1,9 +1,8 @@
+import { AppContext, BoardPosition, TicTacToeBoard, TicTacToeCell } from 'core';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, AlertButton } from 'react-native';
-import { AppContext } from './context';
-import { cellEmpty, createBoard, gameState, insertMove } from './logic/functions';
-import { findDumbMove, findSmartMove } from './logic/ai';
-import { BoardPosition, TicTacToeBoard, TicTacToeCell } from './types';
+import { findDumbMove, findSmartMove } from './ai';
+import { cellEmpty, createBoard, gameState, insertMove } from './functions';
 
 export const useGameManager = () => {
   const [board, setBoard] = useState<TicTacToeBoard>(createBoard());
