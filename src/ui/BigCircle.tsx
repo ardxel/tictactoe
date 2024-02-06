@@ -12,11 +12,7 @@ export const BigCircle = ({ style: customStyle }: BigCircleProps) => {
 
   return (
     <View style={[styles.container, customStyle]}>
-      <View
-        style={[
-          styles.innerCircle,
-          { width: innerSize, height: innerSize },
-        ]}></View>
+      <View style={[styles.innerCircle, { width: innerSize, height: innerSize }]}></View>
     </View>
   );
 };

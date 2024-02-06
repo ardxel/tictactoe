@@ -1,7 +1,7 @@
-import { colors, useAppContext } from "core";
-import { BoardPosition } from "core/types";
-import { Pressable, StyleSheet, ViewStyle } from "react-native";
-import { BigCircle, BigX } from "ui";
+import { colors, useAppContext } from 'core';
+import { BoardPosition } from 'core/types';
+import { Platform, Pressable, StyleSheet, ViewStyle } from 'react-native';
+import { BigCircle, BigX } from 'ui';
 
 export type CellProps = {
   style?: ViewStyle;
@@ -9,18 +9,15 @@ export type CellProps = {
 };
 
 export const Cell = ({ style: customStyle, position: [x, y] }: CellProps) => {
-  const { turn, move, board } = useAppContext();
+  const { turn, move, board, boardDisabled } = useAppContext();
 
   const value = board[x][y];
 
   return (
-    <Pressable
-      onPress={() => move([x, y], turn)}
-      style={[styles.cell, customStyle]}
-    >
-      {value === "X" ? (
+    <Pressable disabled={boardDisabled} onPress={() => move([x, y], turn)} style={[styles.cell, customStyle]}>
+      {value === 'X' ? (
         <BigX style={styles.iconX} width={14} />
-      ) : value === "E" ? null : (
+      ) : value === 'E' ? null : (
         <BigCircle style={styles.iconO} />
       )}
     </Pressable>
@@ -29,18 +26,25 @@ export const Cell = ({ style: customStyle, position: [x, y] }: CellProps) => {
 
 const styles = StyleSheet.create({
   cell: {
-    width: "25%",
+    width: '25%',
     height: 100,
     backgroundColor: colors.darkBlue2,
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#171717',
+    ...Platform.select({
+      ios: {
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
   },
   iconX: {
     width: 80,

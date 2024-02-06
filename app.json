@@ -21,6 +21,9 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "experiments": {
+      "tsconfigPaths": true
+    },
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -28,7 +31,7 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Fredoka-SemiBold.ttf"]
+          "fonts": ["./assets/fonts"]
         }
       ]
     ]

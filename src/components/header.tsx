@@ -1,9 +1,8 @@
-import { colors, useAppContext } from "core";
-import { View, Text, StyleSheet } from "react-native";
-import { BigX, BigCircle } from "ui";
+import { colors, useAppContext } from 'core';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { BigCircle, BigX } from 'ui';
 
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Pressable } from "react-native";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export const Header = () => {
   const { turn, reset } = useAppContext();
@@ -11,64 +10,79 @@ export const Header = () => {
   return (
     <View style={styles.header}>
       <View style={styles.players}>
-        <BigX style={styles.playerX} width={14} />
+        <BigX style={styles.playerX} width={10} />
         <BigCircle style={styles.playerO} />
       </View>
       <View style={[styles.turnTitle, styles.shadowBlue]}>
-        {turn === "X" ? (
-          <BigX color={colors.lightGray} />
-        ) : (
-          <BigCircle style={{ width: 25 }} />
-        )}
+        {turn === 'X' ? <BigX /> : <BigCircle style={{ width: 25 }} />}
         <Text style={styles.turnTitleText}>Turn</Text>
       </View>
       <Pressable onPress={reset} style={[styles.againBtn, styles.shadowGray]}>
-        <Icon name="repeat" size={30} />
+        <FontAwesome name="repeat" size={30} />
       </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  players: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  playerX: {
-    width: 60,
-    height: 60,
-  },
-  playerO: {
-    width: 50,
-    height: 50,
-  },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 10,
     padding: 10,
+    position: 'relative',
+    width: '100%',
   },
+  players: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    left: 10,
+    top: 0,
+  },
+  playerX: {
+    width: 40,
+    height: 40,
+  },
+  playerO: {
+    width: 30,
+    height: 30,
+  },
+
   turnTitle: {
-    width: 120,
+    position: 'absolute',
+    top: 0,
+    left: '50%',
+    marginLeft: -50,
+    minWidth: 120,
+    width: 130,
+    maxWidth: 150,
     backgroundColor: colors.darkBlue2,
     borderRadius: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 6,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   turnTitleText: {
     color: colors.lightGray,
     fontSize: 30,
-    fontFamily: "Fredoka-SemiBold",
+    fontFamily: 'Fredoka-SemiBold',
   },
   shadowBlue: {
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#171717',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
   },
   againBtn: {
     backgroundColor: colors.lightGray,
@@ -76,13 +90,24 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 50,
     height: 50,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    marginRight: 10,
   },
   shadowGray: {
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#171717',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
   },
 });

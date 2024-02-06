@@ -7,12 +7,11 @@
     "strict": true,
     "jsx": "react-native",
     "moduleResolution": "Node",
-    "moduleSuffixes": [".ios", ".android", ".native", ""],
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "lib": ["ESNext"],
     "target": "ES6",
-    "baseUrl": "src"
+    "baseUrl": "./src"
   },
   "include": ["./*.js", "./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules"]

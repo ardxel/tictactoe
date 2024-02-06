@@ -1,6 +1,6 @@
-import { useAppContext } from "core";
-import { StyleSheet, View } from "react-native";
-import { Cell } from "./cell";
+import { useAppContext } from 'core';
+import { StyleSheet, View } from 'react-native';
+import { Cell } from './cell';
 
 export const Board = () => {
   const { board } = useAppContext();
@@ -22,13 +22,13 @@ export const Board = () => {
 
 const styles = StyleSheet.create({
   grid: {
-    width: "100%",
+    width: '100%',
     marginTop: 35,
   },
   row: {
     padding: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
