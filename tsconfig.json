@@ -1,3 +1,19 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "alwaysStrict": true,
+    "strict": true,
+    "jsx": "react-native",
+    "moduleResolution": "Node",
+    "moduleSuffixes": [".ios", ".android", ".native", ""],
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "lib": ["ESNext"],
+    "target": "ES6",
+    "baseUrl": "src"
+  },
+  "include": ["./*.js", "./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules"]
 }
